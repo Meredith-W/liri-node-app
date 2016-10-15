@@ -1,7 +1,11 @@
 var keys = require('./keys.js');
+
+console.log(keys.twitterKeys);
+
 var fs = require('fs');
 var request = require('request');
 var Twitter = require('twitter');
+var client = new Twitter(keys.twitterKeys);
 var Spotify = require('spotify');
 
 
@@ -40,6 +44,8 @@ function doit(action,data) {
                 }
             });
             break;
+
+//if(!thing) -> return true if (thing==false) || (thing ==null)
 
         case 'spotify-this-song':
             spotify.search({ type: 'track', query: data }, function(err, results) {
